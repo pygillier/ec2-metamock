@@ -7,23 +7,23 @@ class App(BaseService):
         'ami-id',
         'ami-launch-index',
         'ami-manifest-path',
-        'block-device-mapping/',
-        'events/',
+        'block-device-mapping/',  # Not implemented yet
+        'events/',  # Not implemented yet
         'hostname',
-        'iam/',
+        'iam/',  # Not implemented yet
         'instance-action',
         'instance-id',
         'instance-type',
         'local-hostname',
         'local-ipv4',
         'mac',
-        'metrics/',
-        'network/',
+        'metrics/',  # Not implemented yet
+        'network/',  # Not implemented yet
         'placement/',
         'profile',
         'public-hostname',
         'public-ipv4',
-        'public-keys/',
+        'public-keys/',  # Not implemented yet
         'reservation-id',
         'security-groups',
         'services/',
@@ -67,7 +67,11 @@ class App(BaseService):
 
     @cherrypy.expose
     def profile(self):
-        return 0
+        return "default-hvm"
+
+    @cherrypy.expose(alias='public-ipv4')
+    def public_ipv4(self):
+        raise cherrypy.NotFound()
 
     @cherrypy.expose(alias='reservation-id')
     def reservation_id(self):
