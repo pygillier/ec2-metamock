@@ -41,42 +41,42 @@ class App(BaseService):
     def ami_manifest_path(self):
         return "(unknown)"
 
-    @cherrypy.expose(alias='hostname')
-    def ami__local_hostname(self):
+    @cherrypy.expose(['hostname', 'local-hostname'])
+    def local_hostname(self):
         return "ip-10.11.12.13.us-east-1.compute.internal"
 
     @cherrypy.expose(alias='instance-action')
     def ami_instance_action(self):
         return "none"
 
-    # @cherrypy.expose(alias='instance-id')
-    def ami_launch_index(self):
-        return 0
+    @cherrypy.expose(alias='instance-id')
+    def instance_id(self):
+        return "i-0235ba33af8e86af4"
 
-    # @cherrypy.expose(alias='instance-type')
-    def ami_launch_index(self):
-        return 0
+    @cherrypy.expose(alias='instance-type')
+    def instance_type(self):
+        return "t3.small"
 
-    # @cherrypy.expose(alias='local-hostname')
-    def ami_launch_index(self):
-        return 0
+    @cherrypy.expose(alias='local-ipv4')
+    def local_ipv4(self):
+        return "10.11.12.13"
 
-    # @cherrypy.expose(alias='local-ipv4')
-    def ami_launch_index(self):
-        return 0
+    @cherrypy.expose
+    def mac(self):
+        return "e9:8b:53:68:9a:20"
 
-    # @cherrypy.expose(alias='mac')
-    def ami_launch_index(self):
-        return 0
-
-    # @cherrypy.expose(alias='profile')
-    def ami_launch_index(self):
+    @cherrypy.expose
+    def profile(self):
         return 0
 
     @cherrypy.expose(alias='reservation-id')
-    def ami_launch_index(self):
-        return "r-01c15d1c4375ace6d"
+    def reservation_id(self):
+        return "r-01c15d13beef4376d"
 
-    # @cherrypy.expose(alias='security-groups')
-    def ami_launch_index(self):
-        return 0
+    @cherrypy.expose(alias='security-groups')
+    def security_groups(self):
+        return "\n".join([
+            'security-group-one',
+            'security-group-two',
+            'security-group-three',
+        ])
