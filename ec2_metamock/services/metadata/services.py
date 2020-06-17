@@ -10,9 +10,9 @@ class App(BaseService):
     ]
 
     @cherrypy.expose(alias='domain')
-    def availability_zone(self):
+    def domain(self):
         return 'amazonaws.com'
 
     @cherrypy.expose(alias='partition')
-    def availability_zone(self):
+    def partition(self):
         return 'aws'
