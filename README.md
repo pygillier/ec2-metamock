@@ -1,4 +1,5 @@
 # EC2 metadata mock service
+[![Build Status](https://travis-ci.org/pygillier/ec2-metamock.svg?branch=master)](https://travis-ci.org/pygillier/ec2-metamock)
 
 This app aims to offer a mock service for EC2 metadata service directly on your computer.
 
