@@ -1,12 +1,12 @@
-import cherrypy
+from bottle import Bottle, route
 from . import services
 from .services import metadata, api
 
+
+app = Bottle()
+
+app.mount('/latest/api', api.service)
+
+
 def run():
-    cherrypy.tree.mount(metadata.Root(), '/latest/meta-data/')
-    cherrypy.tree.mount(metadata.Placement(), '/latest/meta-data/placement/')
-    cherrypy.tree.mount(metadata.Services(), '/latest/meta-data/services/')
-    
-    cherrypy.tree.mount(api.Root(), '/latest/api/')
-    cherrypy.engine.start()
-    cherrypy.engine.block()
+    app.run(host='localhost', port=8080, debug=True)

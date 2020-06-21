@@ -22,6 +22,29 @@ docs = ["sphinx", "zope.interface"]
 tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 
 [[package]]
+category = "dev"
+description = "Screen-scraping library"
+name = "beautifulsoup4"
+optional = false
+python-versions = "*"
+version = "4.9.1"
+
+[package.dependencies]
+soupsieve = [">1.2", "<2.0"]
+
+[package.extras]
+html5lib = ["html5lib"]
+lxml = ["lxml"]
+
+[[package]]
+category = "main"
+description = "Fast and simple WSGI-framework for small web-applications."
+name = "bottle"
+optional = false
+python-versions = "*"
+version = "0.12.18"
+
+[[package]]
 category = "main"
 description = "Highly-optimized, pure-python HTTP server"
 name = "cheroot"
@@ -336,6 +359,14 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "1.15.0"
 
 [[package]]
+category = "dev"
+description = "A modern CSS selector implementation for Beautiful Soup."
+name = "soupsieve"
+optional = false
+python-versions = "*"
+version = "1.9.6"
+
+[[package]]
 category = "main"
 description = "Objects and routines pertaining to date and time (tempora)"
 name = "tempora"
@@ -353,11 +384,53 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 
 [[package]]
 category = "dev"
+description = "Waitress WSGI server"
+name = "waitress"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+version = "1.4.4"
+
+[package.extras]
+docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.9)"]
+testing = ["pytest", "pytest-cover", "coverage (>=5.0)"]
+
+[[package]]
+category = "dev"
 description = "Measures the displayed width of unicode strings in a terminal"
 name = "wcwidth"
 optional = false
 python-versions = "*"
 version = "0.2.4"
+
+[[package]]
+category = "dev"
+description = "WSGI request and response object"
+name = "webob"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*"
+version = "1.8.6"
+
+[package.extras]
+docs = ["Sphinx (>=1.7.5)", "pylons-sphinx-themes"]
+testing = ["pytest (>=3.1.0)", "coverage", "pytest-cov", "pytest-xdist"]
+
+[[package]]
+category = "dev"
+description = "Helper to test WSGI applications"
+name = "webtest"
+optional = false
+python-versions = "*"
+version = "2.0.35"
+
+[package.dependencies]
+WebOb = ">=1.2"
+beautifulsoup4 = "*"
+six = "*"
+waitress = ">=0.8.5"
+
+[package.extras]
+docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.8)"]
+tests = ["nose (<1.3.0)", "coverage", "mock", "pastedeploy", "wsgiproxy2", "pyquery"]
 
 [[package]]
 category = "main"
@@ -387,7 +460,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "76b3b868edcd87032b97f378a06b0d6b013544e5b2f8d105bb5d846e130205f6"
+content-hash = "2914fc7bb8644a05b0adcfb0924ee32b48ebb65f7ab1688e8a8f9b245a0e9d4d"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -398,6 +471,15 @@ atomicwrites = [
 attrs = [
     {file = "attrs-19.3.0-py2.py3-none-any.whl", hash = "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c"},
     {file = "attrs-19.3.0.tar.gz", hash = "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"},
+]
+beautifulsoup4 = [
+    {file = "beautifulsoup4-4.9.1-py2-none-any.whl", hash = "sha256:e718f2342e2e099b640a34ab782407b7b676f47ee272d6739e60b8ea23829f2c"},
+    {file = "beautifulsoup4-4.9.1-py3-none-any.whl", hash = "sha256:a6237df3c32ccfaee4fd201c8f5f9d9df619b93121d01353a64a73ce8c6ef9a8"},
+    {file = "beautifulsoup4-4.9.1.tar.gz", hash = "sha256:73cc4d115b96f79c7d77c1c7f7a0a8d4c57860d1041df407dd1aae7f07a77fd7"},
+]
+bottle = [
+    {file = "bottle-0.12.18-py3-none-any.whl", hash = "sha256:43157254e88f32c6be16f8d9eb1f1d1472396a4e174ebd2bf62544854ecf37e7"},
+    {file = "bottle-0.12.18.tar.gz", hash = "sha256:0819b74b145a7def225c0e83b16a4d5711fde751cd92bae467a69efce720f69e"},
 ]
 cheroot = [
     {file = "cheroot-8.3.0-py2.py3-none-any.whl", hash = "sha256:2b48c88959b5b80a79aca627ae5212acb398becaa70b576b8b89bec1ad0d1367"},
@@ -501,13 +583,29 @@ six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
     {file = "six-1.15.0.tar.gz", hash = "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"},
 ]
+soupsieve = [
+    {file = "soupsieve-1.9.6-py2.py3-none-any.whl", hash = "sha256:feb1e937fa26a69e08436aad4a9037cd7e1d4c7212909502ba30701247ff8abd"},
+    {file = "soupsieve-1.9.6.tar.gz", hash = "sha256:7985bacc98c34923a439967c1a602dc4f1e15f923b6fcf02344184f86cc7efaa"},
+]
 tempora = [
     {file = "tempora-3.0.0-py2.py3-none-any.whl", hash = "sha256:70503a3a10fb341f49e7919d193f0b6362bbfddffb560fac47df3e977414c0c6"},
     {file = "tempora-3.0.0.tar.gz", hash = "sha256:e370d822cf48f5356aab0734ea45807250f5120e291c76712a1d766b49ae34f8"},
 ]
+waitress = [
+    {file = "waitress-1.4.4-py2.py3-none-any.whl", hash = "sha256:3d633e78149eb83b60a07dfabb35579c29aac2d24bb803c18b26fb2ab1a584db"},
+    {file = "waitress-1.4.4.tar.gz", hash = "sha256:1bb436508a7487ac6cb097ae7a7fe5413aefca610550baf58f0940e51ecfb261"},
+]
 wcwidth = [
     {file = "wcwidth-0.2.4-py2.py3-none-any.whl", hash = "sha256:79375666b9954d4a1a10739315816324c3e73110af9d0e102d906fdb0aec009f"},
     {file = "wcwidth-0.2.4.tar.gz", hash = "sha256:8c6b5b6ee1360b842645f336d9e5d68c55817c26d3050f46b235ef2bc650e48f"},
+]
+webob = [
+    {file = "WebOb-1.8.6-py2.py3-none-any.whl", hash = "sha256:a3c89a8e9ba0aeb17382836cdb73c516d0ecf6630ec40ec28288f3ed459ce87b"},
+    {file = "WebOb-1.8.6.tar.gz", hash = "sha256:aa3a917ed752ba3e0b242234b2a373f9c4e2a75d35291dcbe977649bd21fd108"},
+]
+webtest = [
+    {file = "WebTest-2.0.35-py2.py3-none-any.whl", hash = "sha256:44ddfe99b5eca4cf07675e7222c81dd624d22f9a26035d2b93dc8862dc1153c6"},
+    {file = "WebTest-2.0.35.tar.gz", hash = "sha256:aac168b5b2b4f200af4e35867cf316712210e3d5db81c1cbdff38722647bb087"},
 ]
 "zc.lockfile" = [
     {file = "zc.lockfile-2.0-py2.py3-none-any.whl", hash = "sha256:cc33599b549f0c8a248cb72f3bf32d77712de1ff7ee8814312eb6456b42c015f"},
