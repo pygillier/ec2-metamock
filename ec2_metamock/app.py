@@ -4,7 +4,7 @@ from .services import metadata, api
 
 app = Bottle()
 
-app.mount('/latest/api', api.service)
+app.mount('/latest/api', api.api)
 
 
 def run():
