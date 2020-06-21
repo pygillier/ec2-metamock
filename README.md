@@ -66,3 +66,7 @@ Reserved or deprecated keys aren't mocked.
 | services/partition                                      | Yes      |                                                                           |         |
 | spot/instance-action                                    |          |                                                                           |         |
 | spot/termination-time                                   |          |                                                                           |         |
+
+## Contributing
+
+See [CONTRIBUTING.md](/CONTRIBUTING.md).
