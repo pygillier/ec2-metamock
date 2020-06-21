@@ -1,12 +1,13 @@
-from bottle import Bottle, route
+from bottle import Bottle
 from .services import metadata, api
 
 
 app = Bottle()
 
-app.mount('/latest/api', api.api)
-app.mount('/latest/meta-data/services', metadata.services)
+app.mount("/latest/api", api.api)
+app.mount("/latest/meta-data/services", metadata.services)
+app.mount("/latest/meta-data/placement", metadata.placement)
 
 
 def run():
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host="localhost", port=8080, debug=True)
