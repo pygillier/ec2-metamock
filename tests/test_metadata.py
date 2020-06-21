@@ -1,6 +1,6 @@
 import pytest
 
-base_uri = "/latest/meta-data/placement"
+base_uri = "/latest/meta-data"
 
 
 @pytest.mark.parametrize(
