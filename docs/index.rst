@@ -10,6 +10,6 @@ You can use it directly in your favorite virtualenv manager or by using the dock
    :hidden:
 
    installation
-   configuration
-   Available services <services>
-   contributing
+..   configuration
+..   Available services <services>
+..   contributing
