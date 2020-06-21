@@ -1,7 +1,7 @@
-import cherrypy
-from .. import BaseService
+from bottle import Bottle, run, request
 
-class App(BaseService):
+
+class App:
 
     _resources = [
         'ami-id',

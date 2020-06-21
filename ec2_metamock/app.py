@@ -1,5 +1,4 @@
 from bottle import Bottle, route
-from . import services
 from .services import metadata, api
 
 

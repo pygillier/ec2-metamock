@@ -1,18 +1,21 @@
-import cherrypy
+from bottle import Bottle, run, request
 
-from .. import BaseService
+services = Bottle()
 
-class App(BaseService):
-
-    _resources = [
+_resources = [
         'domain',
         'partition'
     ]
 
-    @cherrypy.expose(alias='domain')
-    def domain(self):
-        return 'amazonaws.com'
+@services.route('/')
+def index():
+    return "\n".join(_resources)
 
-    @cherrypy.expose(alias='partition')
-    def partition(self):
-        return 'aws'
+
+@services.route('/domain')
+def domain():
+    return 'amazonaws.com'
+
+@services.route('/partition')
+def partition():
+    return 'aws'

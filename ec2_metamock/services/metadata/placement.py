@@ -1,7 +1,6 @@
 import cherrypy
-from .. import BaseService
 
-class App(BaseService):
+class App:
 
     _resources = [
         'availability-zone'
