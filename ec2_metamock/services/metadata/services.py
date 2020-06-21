@@ -1,21 +1,20 @@
-from bottle import Bottle, run, request
+from bottle import Bottle
 
 services = Bottle()
 
-_resources = [
-        'domain',
-        'partition'
-    ]
+_resources = ["domain", "partition"]
 
-@services.route('/')
+
+@services.route("/")
 def index():
     return "\n".join(_resources)
 
 
-@services.route('/domain')
+@services.route("/domain")
 def domain():
-    return 'amazonaws.com'
+    return "amazonaws.com"
 
-@services.route('/partition')
+
+@services.route("/partition")
 def partition():
-    return 'aws'
+    return "aws"
