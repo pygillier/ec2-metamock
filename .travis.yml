@@ -3,5 +3,11 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
-install: pip install tox-travis poetry>=0.12
-script: tox
+install: pip install tox-travis poetry>=0.12 travis-sphinx
+
+script: 
+  - tox
+  - travis-sphinx build --source=docs
+
+after_success:
+    - travis-sphinx deploy
