@@ -5,6 +5,13 @@ This app aims to offer a mock service for EC2 metadata service directly on your 
 
 For details on what is available in official service, see [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 
+## Usage
+
+Run:
+```bash
+$ ec2_metamock [--host=localhost] [--port=8080]
+```
+
 
 ## Mocked keys
 

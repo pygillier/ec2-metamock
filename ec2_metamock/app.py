@@ -1,14 +1,10 @@
-from bottle import Bottle
-from .services import metadata, api
+import click
+from . import app
 
 
-app = Bottle()
-
-app.mount("/latest/api", api.api)
-app.mount("/latest/meta-data/services", metadata.services)
-app.mount("/latest/meta-data/placement", metadata.placement)
-app.mount("/latest/meta-data", metadata.root)
-
-
-def run():
-    app.run(host="localhost", port=8080, debug=True)
+@click.command()
+@click.option("--host", default="localhost", help="Server host")
+@click.option("--port", default=8080, help="Server port")
+@click.option("--debug", default=False, help="Debug mode", is_flag=True)
+def run(host, port, debug):
+    app.run(host=host, port=port, debug=debug)
