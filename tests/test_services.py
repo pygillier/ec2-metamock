@@ -1,21 +1,19 @@
-import cherrypy
-from cherrypy.test import helper
+import pytest
 
-from ec2_metamock.services.metadata import Services
+base_uri = '/latest/meta-data/services'
 
-class ServicesTest(helper.CPWebCase):
-    @staticmethod
-    def setup_server():
-        cherrypy.tree.mount(Services(), '/', {})
 
-    def test_index(self):
-        self.getPage("/")
-        self.assertStatus('200 OK')
+@pytest.mark.parametrize('endpoint,content', [
+    ('', 'domain'),
+    ('domain', 'amazonaws.com'),
+    ('partition', 'aws'),
+])
+def test_uri(app, endpoint, content):
+    # TODO check response content & decode it
+    uri = "{}/{}".format(base_uri, endpoint)
 
-    def test_domain(self):
-        self.getPage("/domain")
-        self.assertStatus('200 OK')
+    resp = app.get(uri)
 
-    def test_partition(self):
-        self.getPage("/partition")
-        self.assertStatus('200 OK')
+
+    assert resp.status_code == 200
+    assert content in resp

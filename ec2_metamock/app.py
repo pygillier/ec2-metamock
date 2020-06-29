@@ -1,12 +1,10 @@
-import cherrypy
-from . import services
-from .services import metadata, api
+import click
+from . import app
 
-def run():
-    cherrypy.tree.mount(metadata.Root(), '/latest/meta-data/')
-    cherrypy.tree.mount(metadata.Placement(), '/latest/meta-data/placement/')
-    cherrypy.tree.mount(metadata.Services(), '/latest/meta-data/services/')
-    
-    cherrypy.tree.mount(api.Root(), '/latest/api/')
-    cherrypy.engine.start()
-    cherrypy.engine.block()
+
+@click.command()
+@click.option("--host", default="localhost", help="Server host")
+@click.option("--port", default=8080, help="Server port")
+@click.option("--debug", default=False, help="Debug mode", is_flag=True)
+def run(host, port, debug):
+    app.run(host=host, port=port, debug=debug)

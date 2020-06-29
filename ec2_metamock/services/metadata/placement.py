@@ -1,12 +1,15 @@
-import cherrypy
-from .. import BaseService
+from bottle import Bottle
 
-class App(BaseService):
+placement = Bottle()
 
-    _resources = [
-        'availability-zone'
-    ]
+_resources = ["availability-zone"]
 
-    @cherrypy.expose(alias='availability-zone')
-    def availability_zone(self):
-        return 'us-east-1'
+
+@placement.route("/")
+def index():
+    return "\n".join(_resources)
+
+
+@placement.route("/availability-zone")
+def domain():
+    return "us-east-1"
