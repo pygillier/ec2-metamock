@@ -23,6 +23,3 @@ jobs:
     - name: Poetry main tests
       run: |
         poetry run pytest tests/
-    - name: Tox
-      run: |
-        tox -e py${{ matrix.python-version }}
